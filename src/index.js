@@ -19,6 +19,16 @@ reportWebVitals(); */
 /* con il metodo render definisco cosa fa la classe mentre per eseguirlo chiamo il metodo renderNomeClasse */
 
 class Square extends React.Component {
+
+  constructor(props) {
+
+    super(props);
+    this.state= {
+
+      /* set a null il valore all'interno dei square prima del clcik */
+      value:null,
+    }
+  }
   render() {
     return (
       <button className="square" onClick={ () => {console.log('click')}}>

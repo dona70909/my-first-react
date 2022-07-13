@@ -18,24 +18,13 @@ reportWebVitals(); */
 
 /* con il metodo render definisco cosa fa la classe mentre per eseguirlo chiamo il metodo renderNomeClasse */
 
-class Square extends React.Component {
+function Square(props) {
 
-  constructor(props) {
-
-    super(props);
-    this.state= {
-
-      /* set a null il valore all'interno dei square prima del clcik */
-      value:null,
-    }
-  }
-  render() {
-    return (
-      <button className="square" onClick={ () => this.props.onClick()}>
-        {this.props.value}
-      </button>
-    );
-  }
+  return (
+    <button className='square' onClick={props.onClick}>
+      {props.value}
+    </button>
+  );
 }
 
 class Board extends React.Component {
@@ -45,14 +34,21 @@ class Board extends React.Component {
     super(props);
     this.state = {
       squares: Array(9).fill(null),
+      xIsNext: true,
     }
   }
 
   handleClick(i) {
 
     const squares = this.state.squares.slice();
-    squares[i] = 'X';
-    this.setState({squares: squares});
+    squares[i] = this.state.xIsNext ? 'x' : 'o';
+
+    this.setState({ 
+
+      squares: squares,
+      xIsNext: !this.state.xIsNext,
+      
+    });
   }
 
   renderSquare(i) {
@@ -64,7 +60,8 @@ class Board extends React.Component {
 
   /* Qui sono definiti i valori pasati al metodo render della classe Square */
   render() {
-    const status = 'Next player: X';
+
+    const status = 'Next player: ' + (this.state.xIsNext ? 'x' : 'o');
 
     return (
       <div>

@@ -16,11 +16,12 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals(); */
 
+/* con il metodo render definisco cosa fa la classe mentre per eseguirlo chiamo il metodo renderNomeClasse */
 
 class Square extends React.Component {
   render() {
     return (
-      <button className="square">
+      <button className="square" onClick={ () => {console.log('click')}}>
         {this.props.value}
       </button>
     );

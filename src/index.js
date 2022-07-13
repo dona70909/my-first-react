@@ -33,6 +33,7 @@ class Board extends React.Component {
     return <Square value={i} />;
   }
 
+  /* Qui sono definiti i valori pasati al metodo render della classe Square */
   render() {
     const status = 'Next player: X';
 
